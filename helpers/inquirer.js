@@ -24,6 +24,7 @@ const questions = [
 ];
 
 const inquirerMenu = async () => {
+  console.clear();
   console.log('==============================');
   console.log('    Seleccione una opción     ');
   console.log('==============================\n');
@@ -33,7 +34,7 @@ const inquirerMenu = async () => {
   return option;
 };
 
-const pausa = async () => {
+const pause = async () => {
   const question = [
     {
       type: 'input',
@@ -117,7 +118,7 @@ const completeTask = async (tasks) => {
 
 module.exports = {
   inquirerMenu,
-  pausa,
+  pause,
   taskName,
   readInput,
   chooseTaskToDelete,
