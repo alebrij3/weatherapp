@@ -1,12 +1,26 @@
+const axios = require('axios');
+require('dotenv').config();
+
 class Searches {
   history = ['Tegucigalpa', 'Madrid'];
   constructor() {
     //todo: read database if it exists
   }
   async place(place = '') {
-    console.log(place);
-
-    // return an array of all the places that make a match
+    try {
+      const instance = axios.create({
+        baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json`,
+        params: {
+          access_token: process.env.MAPBOX,
+          limit: 5,
+        },
+      });
+      const res = await instance.get();
+      console.log('this is the response', res);
+      return [];
+    } catch (e) {
+      return [];
+    }
   }
 }
 

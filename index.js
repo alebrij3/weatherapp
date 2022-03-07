@@ -9,8 +9,8 @@ const main = async () => {
     opt = await inquirerMenu();
     switch (opt) {
       case 1:
-        const search = await readInput('Lugar:');
-        await searches.place(search);
+        const userQuery = await readInput('Lugar:');
+        await searches.place(userQuery);
         console.log('\nInformación del lugar\n'.cyan);
         console.log('Ciudad');
         console.log('lat:');
@@ -21,7 +21,7 @@ const main = async () => {
         break;
     }
     await pause();
-    console.clear();
+    //console.clear();
   } while (opt !== 0);
 };
 
