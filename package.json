@@ -9,6 +9,7 @@
   "author": "Alejandro Jimenez",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.0",
     "colors": "^1.4.0",
     "inquirer": "^8.2.0"
   }
