@@ -29,7 +29,6 @@ class Searches {
   }
   async weather(lat = '', lng = '') {
     try {
-      // api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
       const instance = axios.create({
         baseURL: 'https://api.openweathermap.org/data/2.5/weather',
         params: {
