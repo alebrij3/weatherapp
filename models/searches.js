@@ -11,6 +11,7 @@ class Searches {
       const instance = axios.create({
         baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json`,
         params: {
+          language: 'es',
           access_token: process.env.MAPBOX,
           limit: 5,
         },
@@ -20,10 +21,29 @@ class Searches {
         id: place.id,
         name: place.place_name,
         lng: place.center[0],
-        lat: place.center[0],
+        lat: place.center[1],
       }));
     } catch (e) {
       return [];
+    }
+  }
+  async weather(lat = '', lng = '') {
+    try {
+      // api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+      const instance = axios.create({
+        baseURL: 'https://api.openweathermap.org/data/2.5/weather',
+        params: {
+          lat,
+          lon: lng,
+          units: 'metric',
+          lang: 'es',
+          appid: process.env.OPENWEATHER,
+        },
+      });
+      const res = await instance.get();
+      return res.data;
+    } catch (e) {
+      console.log(e);
     }
   }
 }

@@ -16,16 +16,16 @@ const main = async () => {
       case 1:
         const userQuery = await readInput('Lugar:');
         let places = await searches.place(userQuery);
-        console.log(places);
-        const place = await listPlaces(places);
-        console.log(place);
+        const [place, lng, lat] = await listPlaces(places);
+        const info = await searches.weather(lat, lng);
+
         console.log('\nInformación del lugar\n'.cyan);
-        console.log(`Lugar:`);
-        console.log(`lat:`);
-        console.log(`lng:`);
-        console.log(`temp:`);
-        console.log(`    min:`);
-        console.log(`    max:`);
+        console.log(`Lugar: ${place}`);
+        console.log(`lat: ${lat}`);
+        console.log(`lng: ${lng}`);
+        console.log(`temp: ${info.main.temp}`);
+        console.log(`    min: ${info.main.temp_min}`);
+        console.log(`    max: ${info.main.temp_max}`);
         break;
     }
     await pause();

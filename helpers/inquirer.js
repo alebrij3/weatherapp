@@ -78,7 +78,7 @@ const readInput = async (message) => {
 };
 const listPlaces = async (places = []) => {
   const choices = places.map((place) => ({
-    value: place.id,
+    value: [place.name, place.lng, place.lat],
     name: place.name,
   }));
   const question = [
