@@ -76,18 +76,16 @@ const readInput = async (message) => {
 
   return desc;
 };
-const chooseTaskToDelete = async (tasks) => {
-  const choices = [];
-  const arr = [];
-  Object.keys(tasks).forEach((key) => arr.push(key));
-  arr.forEach((task) => {
-    choices.push({ value: task, name: tasks[task].desc });
-  });
+const listPlaces = async (places = []) => {
+  const choices = places.map((place) => ({
+    value: place.id,
+    name: place.name,
+  }));
   const question = [
     {
       type: 'list',
       name: 'option',
-      message: 'Elije una tarea',
+      message: 'Elije un lugar',
       choices,
     },
   ];
@@ -120,6 +118,6 @@ module.exports = {
   pause,
   taskName,
   readInput,
-  chooseTaskToDelete,
+  listPlaces,
   completeTask,
 };

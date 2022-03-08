@@ -12,12 +12,16 @@ class Searches {
         baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json`,
         params: {
           access_token: process.env.MAPBOX,
-          limit: 3,
+          limit: 5,
         },
       });
       const res = await instance.get();
-      console.log('this is the response', res.data);
-      return [];
+      return res.data.features.map((place) => ({
+        id: place.id,
+        name: place.place_name,
+        lng: place.center[0],
+        lat: place.center[0],
+      }));
     } catch (e) {
       return [];
     }
